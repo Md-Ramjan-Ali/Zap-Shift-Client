@@ -60,8 +60,9 @@ const Services = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {serviceData.map((service, index) => (
             <div
+              data-aos="zoom-in-up"
               key={index}
-              className="card bg-white border border-base-300 shadow-md p-6 hover:shadow-xl transform transition duration-300 hover:bg-[#CAEB66] hover:text-white hover:scale-110 cursor-pointer"
+              className="card bg-white border border-base-300 shadow-md p-6 hover:shadow-xl transform transition duration-500 hover:bg-[#CAEB66] hover:text-white hover:scale-110 cursor-pointer"
             >
               <div className="mb-4 flex justify-center">{service.icon}</div>
               <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
