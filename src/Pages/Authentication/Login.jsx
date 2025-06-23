@@ -3,6 +3,7 @@ import authImage from "../../assets/authImage.png";
 import ProfastLogo from "../Shared/ProfastLogo/ProfastLogo";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router";
+import SocialLogin from "./SocialLogin";
 
 const Login = () => {
   const {
@@ -68,6 +69,7 @@ const Login = () => {
                   Register
                 </Link>
               </p>
+              <SocialLogin></SocialLogin>
             </div>
           </div>
         </div>

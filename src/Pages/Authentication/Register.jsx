@@ -1,17 +1,34 @@
-import React from 'react';
+import React from "react";
 import authImage from "../../assets/authImage.png";
 import ProfastLogo from "../Shared/ProfastLogo/ProfastLogo";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router";
+import useAuth from "../../hooks/useAuth";
 
 const Register = () => {
-const {
+  const { createUser, setUser, updateUser } = useAuth();
+  const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
+
   const onSubmit = (data) => {
-    console.log(data);
+    createUser(data.email, data.password)
+      .then((result) => {
+        const user = result.user;
+        // update user profile
+        updateUser({ displayName: data.name })
+          .then(() => {
+            setUser({ ...user, displayName: data.name });
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      })
+      .catch((error) => {
+        console.log(error.code);
+      });
   };
   return (
     <div>
