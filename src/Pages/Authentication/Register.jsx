@@ -4,6 +4,7 @@ import ProfastLogo from "../Shared/ProfastLogo/ProfastLogo";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router";
 import useAuth from "../../hooks/useAuth";
+import SocialLogin from "./SocialLogin";
 
 const Register = () => {
   const { createUser, setUser, updateUser } = useAuth();
@@ -90,6 +91,7 @@ const Register = () => {
                   Login
                 </Link>
               </p>
+              <SocialLogin></SocialLogin>
             </div>
           </div>
         </div>

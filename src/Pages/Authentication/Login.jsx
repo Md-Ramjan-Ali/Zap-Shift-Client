@@ -2,17 +2,30 @@ import React from "react";
 import authImage from "../../assets/authImage.png";
 import ProfastLogo from "../Shared/ProfastLogo/ProfastLogo";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import SocialLogin from "./SocialLogin";
+import useAuth from "../../hooks/useAuth";
 
 const Login = () => {
+  const { signIn, setUser } = useAuth();
+const navigate=useNavigate()
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
+
   const onSubmit = (data) => {
     console.log(data);
+    signIn(data.email, data.password)
+      .then((result) => {
+        const user = result.user;
+        setUser(user);
+        navigate('/')
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
   return (
     <div>

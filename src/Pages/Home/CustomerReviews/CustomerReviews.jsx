@@ -4,7 +4,7 @@ import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import "./CustomerReviews.css"; // Custom CSS for centered style
+import "./CustomerReviews.css"; 
 
 const testimonials = [
   {
@@ -32,7 +32,7 @@ const testimonials = [
 
 const CustomerReviews = () => {
   return (
-    <section className="bg-gray-100 py-16 text-center">
+    <section className=" py-16 text-center">
       <div className="max-w-4xl mx-auto px-4">
         {/* Icon */}
         <div className="mb-4">
@@ -54,38 +54,40 @@ const CustomerReviews = () => {
         </p>
 
         {/* Slider */}
-        <Swiper
-          modules={[Navigation, Pagination]}
-          slidesPerView={3}
-          centeredSlides={true}
-          spaceBetween={30}
-          loop={true}
-          pagination={{ clickable: true }}
-          navigation
-          className="testimonial-swiper"
-        >
-          {testimonials.map((item, index) => (
-            <SwiperSlide key={index}>
-              <div className="bg-white p-6 rounded-xl shadow-md min-h-[300px] flex flex-col justify-between text-left">
-                <div>
-                  <span className="text-3xl text-gray-400">“</span>
-                  <p className="text-sm text-gray-600">{item.quote}</p>
-                </div>
-                <div className="mt-6 flex items-center gap-4">
-                  <img
-                    src={item.avatar}
-                    alt={item.name}
-                    className="w-10 h-10 rounded-full"
-                  />
+        <div className="">
+          <Swiper
+            modules={[Navigation, Pagination]}
+            slidesPerView={3}
+            centeredSlides={true}
+            spaceBetween={30}
+            loop={true}
+            pagination={{ clickable: true }}
+            navigation
+            className="testimonial-swiper"
+          >
+            {testimonials.map((item, index) => (
+              <SwiperSlide key={index}>
+                <div className="bg-white p-6 rounded-xl shadow-md min-h-[300px] flex flex-col justify-between text-left">
                   <div>
-                    <h4 className="font-bold text-gray-800">{item.name}</h4>
-                    <p className="text-xs text-gray-500">{item.role}</p>
+                    <span className="text-3xl text-gray-400">“</span>
+                    <p className="text-sm text-gray-600">{item.quote}</p>
+                  </div>
+                  <div className="mt-6 flex items-center gap-4">
+                    <img
+                      src={item.avatar}
+                      alt={item.name}
+                      className="w-10 h-10 rounded-full"
+                    />
+                    <div>
+                      <h4 className="font-bold text-gray-800">{item.name}</h4>
+                      <p className="text-xs text-gray-500">{item.role}</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
       </div>
     </section>
   );

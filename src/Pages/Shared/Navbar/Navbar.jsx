@@ -1,13 +1,46 @@
-import React from 'react';
-import { NavLink } from 'react-router';
-import ProfastLogo from '../ProfastLogo/ProfastLogo';
+import React from "react";
+import { Link, NavLink } from "react-router";
+import ProfastLogo from "../ProfastLogo/ProfastLogo";
+import useAuth from "../../../hooks/useAuth";
 
 const Navbar = () => {
-  const navItems=<>
-  <li><NavLink to='/'>Home</NavLink></li>
-  <li><NavLink to='/about'>About</NavLink></li>
-  
-  </>
+  const { user, LogOut } = useAuth();
+
+
+
+
+
+const handleLogOut=()=>{
+  LogOut().then(()=>{
+    console.log('Logout successfully');
+  }).catch(error=>{
+    console.log(error);
+  })
+}
+
+
+  const navItems = (
+    <>
+      <li>
+        <NavLink to="/">Home</NavLink>
+      </li>
+      <li>
+        <NavLink to="/">Services</NavLink>
+      </li>
+      <li>
+        <NavLink to="/coverage">Coverage</NavLink>
+      </li>
+      <li>
+        <NavLink to="/">Pricing</NavLink>
+      </li>
+      <li>
+        <NavLink to="/about">About Us</NavLink>
+      </li>
+      <li>
+        <NavLink to="/about">Be a Rider</NavLink>
+      </li>
+    </>
+  );
   return (
     <nav className="navbar bg-base-100 shadow-sm">
       <div className="navbar-start">
@@ -33,18 +66,24 @@ const Navbar = () => {
             tabIndex={0}
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
           >
-           {navItems}
+            {navItems}
           </ul>
         </div>
         <ProfastLogo></ProfastLogo>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
-         {navItems}
-        </ul>
+        <ul className="menu menu-horizontal px-1">{navItems}</ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Button</a>
+        {user ? (
+          <Link onClick={handleLogOut} className="btn">
+            Logout
+          </Link>
+        ) : (
+          <>
+            <Link to='/auth/login' className="btn">Login</Link>
+          </>
+        )}
       </div>
     </nav>
   );

@@ -1,8 +1,10 @@
 import React from "react";
 import useAuth from "../../hooks/useAuth";
+import { useNavigate } from "react-router";
 
 const SocialLogin = () => {
   const { googleSignIn,setUser } = useAuth();
+  const navigate=useNavigate()
 
   const handleGoogleLogin = () => {
     googleSignIn()
@@ -10,6 +12,7 @@ const SocialLogin = () => {
         console.log(result.user);
         const user=result.user
         setUser(user)
+        navigate('/')
       })
       .catch((error) => {
         console.log(error);
