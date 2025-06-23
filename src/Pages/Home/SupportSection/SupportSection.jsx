@@ -42,7 +42,7 @@ const SupportSection = () => {
                 <img
                   src={item.image}
                   alt={item.title}
-                  className="w-full max-w-44 pr-10 object-center"
+                  className=" max-w-32 pr-10 object-center"
                 />
               </div>
 

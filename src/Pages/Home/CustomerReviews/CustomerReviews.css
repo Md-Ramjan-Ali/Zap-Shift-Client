@@ -1,0 +1,10 @@
+.testimonial-swiper .swiper-slide {
+  opacity: 0.3;
+  transform: scale(0.95);
+  transition: all 0.3s ease-in-out;
+}
+
+.testimonial-swiper .swiper-slide.swiper-slide-active {
+  opacity: 1;
+  transform: scale(1.05);
+}
