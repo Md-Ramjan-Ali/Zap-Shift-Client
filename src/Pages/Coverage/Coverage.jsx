@@ -1,9 +1,10 @@
 import React from "react";
 import BangladeshMap from "./BangladeshMap";
-// import { useLoaderData } from "react-router";
+import { useLoaderData } from "react-router";
 
 const Coverage = () => {
-  // const serviceCenters = useLoaderData();
+  const serviceCenters = useLoaderData();
+  console.log(serviceCenters);
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-10">
@@ -11,11 +12,8 @@ const Coverage = () => {
         We are available in 64 districts
       </h1>
 
-      {/* Later you can add your search box here */}
-      {/* <SearchDistrictBox /> */}
-
-      {/* <BangladeshMap serviceCenters={serviceCenters} /> */}
-      <BangladeshMap/>
+      <BangladeshMap serviceCenters={serviceCenters} />
+    
     </div>
   );
 };

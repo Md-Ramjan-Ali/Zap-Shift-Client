@@ -17,8 +17,9 @@ const router = createBrowserRouter([
         Component: Home,
       },
       {
-        path:'/coverage',
-        Component: Coverage
+        path: "/coverage",
+        Component: Coverage,
+        loader: () => fetch("./serviceCenter.json"),
       },
     ],
   },
@@ -37,9 +38,9 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path:'/*',
-    Component: ErrorPage
-  }
+    path: "/*",
+    Component: ErrorPage,
+  },
 ]);
 
 export default router

@@ -37,7 +37,7 @@ const handleLogOut=()=>{
         <NavLink to="/about">About Us</NavLink>
       </li>
       <li>
-        <NavLink to="/about">Be a Rider</NavLink>
+        <NavLink to="/">Be a Rider</NavLink>
       </li>
     </>
   );
