@@ -25,7 +25,7 @@ const handleLogOut=()=>{
         <NavLink to="/">Home</NavLink>
       </li>
       <li>
-        <NavLink to="/">Services</NavLink>
+        <NavLink to="/sendParcel">Send A Parcel</NavLink>
       </li>
       <li>
         <NavLink to="/coverage">Coverage</NavLink>
