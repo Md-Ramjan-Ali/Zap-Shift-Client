@@ -1,8 +1,8 @@
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import { useLoaderData } from "react-router";
-// import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useAuth from "../../hooks/useAuth";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const generateTrackingID = () => {
   const date = new Date();
@@ -19,7 +19,7 @@ const SendParcel = () => {
     formState: { errors },
   } = useForm();
   const { user } = useAuth();
-  // const axiosSecure = useAxiosSecure();
+  const axiosSecure = useAxiosSecure();
 
   const serviceCenters = useLoaderData();
   // Extract unique regions
@@ -114,19 +114,19 @@ const SendParcel = () => {
 
         console.log("Ready for payment:", parcelData);
 
-        // axiosSecure.post("/parcels", parcelData).then((res) => {
-        //   console.log(res.data);
-        //   if (res.data.insertedId) {
-        //     // TODO: redirect to a payment page
-        //     Swal.fire({
-        //       title: "Redirecting...",
-        //       text: "Proceeding to payment gateway.",
-        //       icon: "success",
-        //       timer: 1500,
-        //       showConfirmButton: false,
-        //     });
-        //   }
-        // });
+        axiosSecure.post("/parcels", parcelData).then((res) => {
+          console.log(res.data);
+          if (res.data.insertedId) {
+            // TODO: redirect to a payment page
+            Swal.fire({
+              title: "Redirecting...",
+              text: "Proceeding to payment gateway.",
+              icon: "success",
+              timer: 1500,
+              showConfirmButton: false,
+            });
+          }
+        });
       }
     });
   };
@@ -213,6 +213,7 @@ const SendParcel = () => {
               <input
                 {...register("sender_name", { required: true })}
                 className="input input-bordered w-full"
+                value={user.displayName}
                 placeholder="Name"
               />
               <input

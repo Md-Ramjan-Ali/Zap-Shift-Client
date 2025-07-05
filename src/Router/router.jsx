@@ -8,6 +8,8 @@ import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import Coverage from "../Pages/Coverage/Coverage";
 import PrivetRoute from "../Routes/PrivetRoute";
 import SendParcel from "../Pages/SendParcel/SendParcel";
+import DashboardLayout from "../Layout/DashboardLayout";
+import MyParcel from "../Pages/Dashboard/MyParcel/MyParcel";
 
 const router = createBrowserRouter([
   {
@@ -47,6 +49,20 @@ const router = createBrowserRouter([
         Component: Register,
       },
     ],
+  },
+  {
+    path: "/dashboard",
+    element: (
+      <PrivetRoute>
+        <DashboardLayout></DashboardLayout>
+      </PrivetRoute>
+    ),
+    children:[
+      {
+        path:'myParcel',
+        Component: MyParcel
+      }
+    ]
   },
   {
     path: "/*",
